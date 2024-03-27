@@ -1,0 +1,46 @@
+{%extends "base.html"%}
+
+
+{% block content %}
+<h2> orders </h2>
+
+<div class="container">
+<div class="row">
+    {% for order in orders %}
+    <div class="col-lg-4 col-md-12 mb-4">
+    <div class="card">
+        
+        <h5>Receipt number: {{order.receipt_number}} </h5>
+        <p>Customer: {{order.customer.name}} </p>
+
+        <h5>Items </h5>
+        <ul>
+        {% for item in order.orderitem_set.all %}
+            <li>{{ item.product.name }} - Quantity: {{ item.quantity }} - Total: Ksh {{ item.total_amount }}</li>
+        {% endfor %}
+        </ul>
+        <p>Amount: Ksh {{order.total_amount}} </p>
+        <p>Tax Amount: Ksh {{order.tax_amount}} </p>
+        <p>Store: {{order.store.name}} </p>
+
+    </div>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}
+
+{% for order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.customer.name }}</td>
+                <td>{{ order.store.name }}</td>
+                <td>{{ order.receipt_number }}</td>
+                <td>${{ order.total_amount }}</td>
+                <td>
+                    <ul>
+                       
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}

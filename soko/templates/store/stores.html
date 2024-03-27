@@ -1,0 +1,21 @@
+{%extends "base.html"%}
+
+
+{% block content %}
+<h2> Stores </h2>
+
+<div class="container">
+<div class="row">
+    {% for store in stores %}
+    <div class="col-lg-4 col-md-12 mb-4">
+    <div class="card">
+        
+        <h5>{{store.name}} </h5>
+        <p>Owner: {{store.customer}} </p>
+        
+    </div>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}
